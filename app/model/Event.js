@@ -11,6 +11,7 @@ aKa.model.Event = Backbone.Model.extend({
     initialize : function() {
         var cid = this.get('cid');
 
+        //for newly-created models, be sure they're added to localStorage
         if (!cid || !aKa.Data.getModel(cid)) {
             aKa.Data.addModel(this.toJSON());
         }
