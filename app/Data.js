@@ -6,7 +6,7 @@
     //need to compile this for consistent results?
     KEY_TEST.compile();
 
-    function fillDummyData() {
+    function generateDummyData() {
         var data = [
             {
                 name     : 'WI State Marathon',
@@ -52,7 +52,7 @@
 
             //fill localstorage with test data
             if (!localStorage.length && fillDummy) {
-                data = fillDummyData();
+                data = generateDummyData();
             }
             //get data from localStorage
             else {
@@ -66,7 +66,7 @@
                 }
 
                 if (data.length === 0 && fillDummy) {
-                    data = fillDummyData();
+                    data = generateDummyData();
                 }
             }
 
@@ -91,6 +91,10 @@
         addModel : function(model) {
             var cid = generateCid();
 
+            localStorage[cid] = JSON.stringify(model);
+        },
+
+        saveModel : function(cid, model) {
             localStorage[cid] = JSON.stringify(model);
         }
     };
