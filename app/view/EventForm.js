@@ -6,14 +6,17 @@ aKa.view.EventForm = Backbone.View.extend({
     },
 
     initialize : function () {
-        //TODO: this doesn't work
-        this.listenTo($('body'), 'editmodel', this.onEditModel);
+        aKa.EventBus.on('editmodel', this.onEditModel, this);
     },
 
     onEditModel : function (model) {
         this.model = model;
 
-        //TODO: ...
+        _.each(this.$('input'), function(field) {
+            if (field.name) {
+                field.value = model.get(field.name);
+            }
+        });
     },
 
     onUpdateEvent : function (e) {
@@ -21,7 +24,8 @@ aKa.view.EventForm = Backbone.View.extend({
         e.preventDefault();
 
         var m = this.model,
-            values = {};
+            values = {},
+            newModel = false;
 
         _.each(this.$('input'), function(field) {
             if (field.name) {
@@ -31,6 +35,7 @@ aKa.view.EventForm = Backbone.View.extend({
 
         if (!m) {
             m = new aKa.model.Event();
+            newModel = true;
         }
 
         //validate/sanitize the model
@@ -42,7 +47,8 @@ aKa.view.EventForm = Backbone.View.extend({
         }
 
         m.save();
-        //TODO: fire event, passing new/updated model
+        if (newModel) { aKa.EventBus.trigger('newmodel', m); }
+
         this.resetForm();
     },
 

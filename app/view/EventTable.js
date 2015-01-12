@@ -5,21 +5,11 @@ aKa.view.EventTable = Backbone.View.extend({
 
     className : 'aka-event-table',
 
-    events : {
-        //TODO: listen for when new models are added
-    },
-
     initialize : function () {
-        var events = this.collection;
-
         //render all of the existing events in the collection
-        _.each(events.models, this.addEvent, this);
+        this.renderRows();
 
-        //this.collection.on('change', function() {
-        //    debugger;
-        //
-        //    //this.render();
-        //});
+        aKa.EventBus.on('newmodel', this.newEvent, this);
     },
 
     addEvent : function(event) {
@@ -28,5 +18,18 @@ aKa.view.EventTable = Backbone.View.extend({
         });
 
         this.$el.append(row.$el);
+    },
+
+    newEvent : function(event) {
+        this.collection.add(event);
+
+        //TODO: is there a more efficient/smoother way of doing this?
+        this.$el.html('');
+        
+        this.renderRows();
+    },
+
+    renderRows : function() {
+        _.each(this.collection.models, this.addEvent, this);
     }
 });

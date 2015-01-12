@@ -36,6 +36,8 @@ aKa.view.EventView = Backbone.View.extend({
     onDeleteHandler : function () {
         var me = this;
 
+        //TODO: show mask
+
         me.model.destroy({
             success : function(model, notSure, request) {
                 aKa.Data.removeModel(model.get('cid'));
@@ -47,7 +49,6 @@ aKa.view.EventView = Backbone.View.extend({
     },
 
     onEditHandler : function (eventObj) {
-        //TODO: this throws an error
-        $('body').trigger('editmodel', this.model);
+        aKa.EventBus.trigger('editmodel', this.model);
     }
 });
