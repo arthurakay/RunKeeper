@@ -1,13 +1,18 @@
 #addEvent {
-  label {
-    width       : 150px;
-    font-weight : bolder;
-    display     : inline-block;
-  }
+    label {
+        width       : 150px;
+        font-weight : bolder;
+        display     : inline-block;
+    }
 
-  input {
-    width   : 200px;
-    padding : 5px;
-    margin  : 5px 10px;
-  }
+    input {
+        width   : 200px;
+        padding : 5px;
+        margin  : 5px 10px;
+    }
+
+    .errorMsg {
+        display : block;
+        color   : #f00;
+    }
 }

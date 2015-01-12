@@ -42,10 +42,11 @@ aKa.view.EventForm = Backbone.View.extend({
         var error = m.set(values, { validate : true });
 
         if (error === false) {
-            //TODO: display error message
+            this.$('.errorMsg').html(m.validate(_.extend(values)));
             return;
         }
 
+        this.$('.errorMsg').html('');
         m.save();
         if (newModel) { aKa.EventBus.trigger('newmodel', m); }
 

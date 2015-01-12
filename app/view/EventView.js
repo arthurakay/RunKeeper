@@ -36,8 +36,6 @@ aKa.view.EventView = Backbone.View.extend({
     onDeleteHandler : function () {
         var me = this;
 
-        //TODO: show mask
-
         me.model.destroy({
             success : function(model, notSure, request) {
                 aKa.Data.removeModel(model.get('cid'));

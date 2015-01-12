@@ -8,6 +8,10 @@
   padding: 5px;
   margin: 5px 10px;
 }
+#addEvent .errorMsg {
+  display: block;
+  color: #f00;
+}
 
 #eventTable tr.aka-event-row {
   padding: 10px;
