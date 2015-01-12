@@ -1,0 +1,35 @@
+#eventTable {
+
+    tr.aka-event-row {
+        padding     : 10px;
+        line-height : 20px;
+
+        td.eventDate {
+            width : 150px;
+        }
+
+        td.eventName {
+            width       : 300px;
+            font-weight : bolder;
+        }
+
+        td.eventLocation {
+            width : 300px;
+        }
+
+        td.eventCost {
+            width : 100px;
+        }
+
+        td.eventOptions {
+            button.delete {
+                color : #f00;
+            }
+
+            button.edit {
+                color : #00f;
+            }
+        }
+    }
+
+}
