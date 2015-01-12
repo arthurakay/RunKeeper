@@ -14,17 +14,29 @@ aKa.view.EventForm = Backbone.View.extend({
         this.model = model;
     },
 
-    onUpdateEvent : function () {
-        var m = this.model;
+    onUpdateEvent : function (e) {
+        //don't actually submit the form
+        e.preventDefault();
+
+        var m = this.model,
+            values = {};
+
+        _.each(this.$('input'), function(field) {
+            if (field.name) {
+                values[field.name] = field.value
+            }
+        });
+
+        //TODO: validate/sanitize the model
 
         if (!m) {
-            m = new aKa.model.Event({
+            m = new aKa.model.Event(values);
 
-            });
+            //TODO: fire event, passing new/updated model
         }
-
-        //TODO: fire event, passing new/updated model
-
+        else {
+            //TODO: apply values to existing model
+        }
 
         this.resetForm();
     },
@@ -32,6 +44,7 @@ aKa.view.EventForm = Backbone.View.extend({
     resetForm : function () {
         this.model = null;
 
-        //clear form fields?
+        //clear form fields
+        this.$el[0].reset();
     }
 });

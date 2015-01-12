@@ -29,21 +29,32 @@
 
     <h2>Add an Event</h2>
 
-    <div id="addEvent">
+    <form id="addEvent">
         <label for="eventName">Event Name:</label>
-        <input type="text" id="eventName" /><br />
+        <input type="text"
+               id="eventName"
+               name="name"
+               placeholder="Your next marathon..." /><br />
 
         <label for="eventDate">Event Date:</label>
-        <input type="date" id="eventDate" /><br />
+        <input type="date"
+               id="eventDate"
+               name="date"
+               value="2015-01-01" /><br />
 
         <label for="eventLocation">Location:</label>
-        <input type="text" id="eventLocation" /><br />
+        <input type="text"
+               id="eventLocation"
+               name="location"/><br />
 
         <label for="eventCost">Cost:</label>
-        <input type="number" id="eventCost" /><br />
+        <input type="number"
+               id="eventCost"
+               name="cost"
+               value="0" /><br />
 
         <input type="submit" value="Add Event" />
-    </div>
+    </form>
 
     <!-- Application Code -->
     <script type="text/javascript" src="app/app.js"></script>
