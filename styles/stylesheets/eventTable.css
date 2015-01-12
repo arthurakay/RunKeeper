@@ -3,14 +3,14 @@
   line-height: 20px;
 }
 #eventTable tr.aka-event-row td.eventDate {
-  width: 150px;
+  width: 100px;
 }
 #eventTable tr.aka-event-row td.eventName {
-  width: 300px;
+  width: 250px;
   font-weight: bolder;
 }
 #eventTable tr.aka-event-row td.eventLocation {
-  width: 300px;
+  width: 150px;
 }
 #eventTable tr.aka-event-row td.eventCost {
   width: 100px;
