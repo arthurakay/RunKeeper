@@ -2,6 +2,8 @@ if (!window.aKa) {
     aKa = {
         model      : {},
         view       : {},
-        collection : {}
+        collection : {},
+
+        EventBus : _.extend({}, Backbone.Events)
     };
 }
